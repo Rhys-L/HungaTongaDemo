@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e5fbac465f0375ab426af9aefef75255 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e5fbac465f0375ab426af9aefef75255" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e5fbac465f0375ab426af9aefef75255 = L.map(
+                "map_e5fbac465f0375ab426af9aefef75255",
+                {
+                    center: [20.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 2,
+                    zoomControl: true,
+                    preferCanvas: false,
+                    drawExport: false,
+                    layersControl: true,
+                }
+            );
+            L.control.scale().addTo(map_e5fbac465f0375ab426af9aefef75255);
+
+            
+
+        
+    
+            var tile_layer_aeacb50c7787dbf7ecd402f9ef3bcdb1 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_aeacb50c7787dbf7ecd402f9ef3bcdb1.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            L.control.fullscreen(
+                {"forceSeparateButton": false, "position": "topleft", "title": "Full Screen", "titleCancel": "Exit Full Screen"}
+            ).addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            var options = {
+              position: "topleft",
+              draw: {},
+              edit: {},
+            }
+            // FeatureGroup is to store editable layers.
+            var drawnItems_draw_control_9375ba5781686fb20fc7250876220966 = new L.featureGroup().addTo(
+                map_e5fbac465f0375ab426af9aefef75255
+            );
+            options.edit.featureGroup = drawnItems_draw_control_9375ba5781686fb20fc7250876220966;
+            var draw_control_9375ba5781686fb20fc7250876220966 = new L.Control.Draw(
+                options
+            ).addTo( map_e5fbac465f0375ab426af9aefef75255 );
+            map_e5fbac465f0375ab426af9aefef75255.on(L.Draw.Event.CREATED, function(e) {
+                var layer = e.layer,
+                    type = e.layerType;
+                var coords = JSON.stringify(layer.toGeoJSON());
+                layer.on('click', function() {
+                    alert(coords);
+                    console.log(coords);
+                });
+                drawnItems_draw_control_9375ba5781686fb20fc7250876220966.addLayer(layer);
+             });
+            map_e5fbac465f0375ab426af9aefef75255.on('draw:created', function(e) {
+                drawnItems_draw_control_9375ba5781686fb20fc7250876220966.addLayer(e.layer);
+            });
+            
+        
+    
+            var measure_control_52eb8cb1e2fb63f023e7e175cd089b71 = new L.Control.Measure(
+                {"position": "bottomleft", "primaryAreaUnit": "sqmeters", "primaryLengthUnit": "meters", "secondaryAreaUnit": "acres", "secondaryLengthUnit": "miles"});
+            map_e5fbac465f0375ab426af9aefef75255.addControl(measure_control_52eb8cb1e2fb63f023e7e175cd089b71);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+
+            var geocoderOpts_geocoder_b0aa6de561a759635fd16c4ae2acec77 = {"collapsed": true, "defaultMarkGeocode": true, "position": "topleft", "provider": "nominatim", "providerOptions": {}, "zoom": 11};
+
+            // note: geocoder name should start with lowercase
+            var geocoderName_geocoder_b0aa6de561a759635fd16c4ae2acec77 = geocoderOpts_geocoder_b0aa6de561a759635fd16c4ae2acec77["provider"];
+
+            var customGeocoder_geocoder_b0aa6de561a759635fd16c4ae2acec77 = L.Control.Geocoder[ geocoderName_geocoder_b0aa6de561a759635fd16c4ae2acec77 ](
+                geocoderOpts_geocoder_b0aa6de561a759635fd16c4ae2acec77['providerOptions']
+            );
+            geocoderOpts_geocoder_b0aa6de561a759635fd16c4ae2acec77["geocoder"] = customGeocoder_geocoder_b0aa6de561a759635fd16c4ae2acec77;
+
+            L.Control.geocoder(
+                geocoderOpts_geocoder_b0aa6de561a759635fd16c4ae2acec77
+            ).on('markgeocode', function(e) {
+                var zoom = geocoderOpts_geocoder_b0aa6de561a759635fd16c4ae2acec77['zoom'] || map_e5fbac465f0375ab426af9aefef75255.getZoom();
+                map_e5fbac465f0375ab426af9aefef75255.setView(e.geocode.center, zoom);
+            }).addTo(map_e5fbac465f0375ab426af9aefef75255);
+
+        
+    
+            map_e5fbac465f0375ab426af9aefef75255.fitBounds(
+                [[20, 0], [20, 0]],
+                {"maxZoom": 2}
+            );
+        
+    
+            var tile_layer_c7fd7763467ce3b21199250044714cf1 = L.tileLayer(
+                "https://mt1.google.com/vt/lyrs=s\u0026x={x}\u0026y={y}\u0026z={z}\u0026key=YOUR-API-KEY",
+                {"attribution": "Google", "detectRetina": false, "maxNativeZoom": 24, "maxZoom": 24, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_c7fd7763467ce3b21199250044714cf1.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            var marker_6038f827e2e6caac50fb5a6074356c05 = L.marker(
+                [20.0, -175.0],
+                {"markerColors": "red", "shape": "circle"}
+            ).addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+        var popup_dba1cd701702828f7cb5efad3bb3adbd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b686a6c9e9ccf51ea8b2c23ef1c69afe = $(`<div id="html_b686a6c9e9ccf51ea8b2c23ef1c69afe" style="width: 100.0%; height: 100.0%;">Hunga Tonga</div>`)[0];
+                popup_dba1cd701702828f7cb5efad3bb3adbd.setContent(html_b686a6c9e9ccf51ea8b2c23ef1c69afe);
+            
+        
+
+        marker_6038f827e2e6caac50fb5a6074356c05.bindPopup(popup_dba1cd701702828f7cb5efad3bb3adbd)
+        ;
+
+        
+    
+    
+            var tile_layer_e5ffecfd549220c15265a684630e21d8 = L.tileLayer(
+                "http://127.0.0.1:62159/api/tiles/{z}/{x}/{y}.png?\u0026filename=%2FUsers%2Frjleahy%2FDesktop%2FHTHH%2FHungaTonga%2FCapstone%2Fcode%2Fdata%2Fplots%2F2022-01-16%2FOMI-Aura_L3-OMSO2e_ColumnAmountSO2_2022_1_16_8bit.tif\u0026colormap=viridis",
+                {"attribution": "Raster file served by \u003ca href=\u0027https://github.com/banesullivan/localtileserver\u0027 target=\u0027_blank\u0027\u003elocaltileserver\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 30, "maxZoom": 30, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_e5ffecfd549220c15265a684630e21d8.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            map_e5fbac465f0375ab426af9aefef75255.fitBounds(
+                [[-89.875, -179.875], [89.875, 179.875]],
+                {}
+            );
+        
+    
+            var tile_layer_a0296fd1fd2a1a5126ae2881b476e0cc = L.tileLayer(
+                "http://127.0.0.1:62159/api/tiles/{z}/{x}/{y}.png?\u0026filename=%2FUsers%2Frjleahy%2FDesktop%2FHTHH%2FHungaTonga%2FCapstone%2Fcode%2Fdata%2Fplots%2F2022-01-16%2Fmask_OMI-Aura_L3-OMSO2e_ColumnAmountSO2_2022_1_16_8bit_36.tif\u0026colormap=magma",
+                {"attribution": "Raster file served by \u003ca href=\u0027https://github.com/banesullivan/localtileserver\u0027 target=\u0027_blank\u0027\u003elocaltileserver\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 30, "maxZoom": 30, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_a0296fd1fd2a1a5126ae2881b476e0cc.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            map_e5fbac465f0375ab426af9aefef75255.fitBounds(
+                [[-89.875, -179.875], [89.875, 179.875]],
+                {}
+            );
+        
+    
+            var tile_layer_28c24849e8a3b12aab25f803b8f0c8e9 = L.tileLayer(
+                "http://127.0.0.1:62159/api/tiles/{z}/{x}/{y}.png?\u0026filename=%2FUsers%2Frjleahy%2FDesktop%2FHTHH%2FHungaTonga%2FCapstone%2Fcode%2Fdata%2Fplots%2F2022-01-16%2FAerosol_Optical_Depth_Land_Ocean_Mean_MYD08_D3_A2022016_8bit.tif\u0026colormap=plasma",
+                {"attribution": "Raster file served by \u003ca href=\u0027https://github.com/banesullivan/localtileserver\u0027 target=\u0027_blank\u0027\u003elocaltileserver\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 30, "maxZoom": 30, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_28c24849e8a3b12aab25f803b8f0c8e9.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            map_e5fbac465f0375ab426af9aefef75255.fitBounds(
+                [[-90.0, -180.0], [90.0, 180.0]],
+                {}
+            );
+        
+    
+            var tile_layer_4ed2b642d308c8c59f61023fba368d07 = L.tileLayer(
+                "http://127.0.0.1:62159/api/tiles/{z}/{x}/{y}.png?\u0026filename=%2FUsers%2Frjleahy%2FDesktop%2FHTHH%2FHungaTonga%2FCapstone%2Fcode%2Fdata%2Fplots%2F2022-01-16%2Fmask_Aerosol_Optical_Depth_Land_Ocean_Mean_MYD08_D3_A2022016_8bit_36.tif\u0026colormap=magma",
+                {"attribution": "Raster file served by \u003ca href=\u0027https://github.com/banesullivan/localtileserver\u0027 target=\u0027_blank\u0027\u003elocaltileserver\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 30, "maxZoom": 30, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_4ed2b642d308c8c59f61023fba368d07.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            map_e5fbac465f0375ab426af9aefef75255.fitBounds(
+                [[-90.0, -180.0], [90.0, 180.0]],
+                {}
+            );
+        
+    
+            var tile_layer_a247d6b52e9c83e7ad4b24d02ae8c325 = L.tileLayer(
+                "http://127.0.0.1:62159/api/tiles/{z}/{x}/{y}.png?\u0026filename=%2FUsers%2Frjleahy%2FDesktop%2FHTHH%2FHungaTonga%2FCapstone%2Fcode%2Fdata%2Fplots%2F2022-01-16%2Fstacked_aod_so2_2022-01-16_8bit.tif\u0026colormap=inferno",
+                {"attribution": "Raster file served by \u003ca href=\u0027https://github.com/banesullivan/localtileserver\u0027 target=\u0027_blank\u0027\u003elocaltileserver\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 30, "maxZoom": 30, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_a247d6b52e9c83e7ad4b24d02ae8c325.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            map_e5fbac465f0375ab426af9aefef75255.fitBounds(
+                [[-90.0, -180.0], [90.0, 180.0]],
+                {}
+            );
+        
+    
+            var tile_layer_9f6480848afd3275a14a0fdff9f5fb67 = L.tileLayer(
+                "http://127.0.0.1:62159/api/tiles/{z}/{x}/{y}.png?\u0026filename=%2FUsers%2Frjleahy%2FDesktop%2FHTHH%2FHungaTonga%2FCapstone%2Fcode%2Fdata%2Fplots%2F2022-01-16%2Fmask_stacked_aod_so2_2022-01-16_8bit_36.tif\u0026colormap=magma",
+                {"attribution": "Raster file served by \u003ca href=\u0027https://github.com/banesullivan/localtileserver\u0027 target=\u0027_blank\u0027\u003elocaltileserver\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 30, "maxZoom": 30, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_9f6480848afd3275a14a0fdff9f5fb67.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            map_e5fbac465f0375ab426af9aefef75255.fitBounds(
+                [[-90.0, -180.0], [90.0, 180.0]],
+                {}
+            );
+        
+    
+        function geo_json_cb0013bd5e8dfb608c21e764c61066cb_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#3388ff", "fillOpacity": 0, "opacity": 1, "weight": 2};
+            }
+        }
+        function geo_json_cb0013bd5e8dfb608c21e764c61066cb_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0, "weight": 4};
+            }
+        }
+
+        function geo_json_cb0013bd5e8dfb608c21e764c61066cb_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_cb0013bd5e8dfb608c21e764c61066cb.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_cb0013bd5e8dfb608c21e764c61066cb_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_cb0013bd5e8dfb608c21e764c61066cb = L.geoJson(null, {
+                onEachFeature: geo_json_cb0013bd5e8dfb608c21e764c61066cb_onEachFeature,
+            
+                style: geo_json_cb0013bd5e8dfb608c21e764c61066cb_styler,
+        });
+
+        function geo_json_cb0013bd5e8dfb608c21e764c61066cb_add (data) {
+            geo_json_cb0013bd5e8dfb608c21e764c61066cb
+                .addData(data);
+        }
+            geo_json_cb0013bd5e8dfb608c21e764c61066cb_add({"bbox": [-155.576755, -71.95, 151.0467, 53.005652], "features": [{"bbox": [116.728833, 20.698556, 116.728833, 20.698556], "geometry": {"coordinates": [116.728833, 20.698556], "type": "Point"}, "id": "2842", "properties": {"AOD_1020nm": 0.112481, "AOD_440nm": 0.276187, "AOD_870nm": 0.131385, "Elevation_Meters": 5.0}, "type": "Feature"}, {"bbox": [-7.9115, 38.567833, -7.9115, 38.567833], "geometry": {"coordinates": [-7.9115, 38.567833], "type": "Point"}, "id": "9065", "properties": {"AOD_1020nm": 0.19267, "AOD_440nm": 0.254203, "AOD_870nm": 0.200271, "Elevation_Meters": 293.0}, "type": "Feature"}, {"bbox": [-121.6464, 36.4021, -121.6464, 36.4021], "geometry": {"coordinates": [-121.6464, 36.4021], "type": "Point"}, "id": "9298", "properties": {"AOD_1020nm": 0.010341, "AOD_440nm": 0.028448, "AOD_870nm": 0.012149, "Elevation_Meters": 340.0}, "type": "Feature"}, {"bbox": [90.756415, 22.226675, 90.756415, 22.226675], "geometry": {"coordinates": [90.756415, 22.226675], "type": "Point"}, "id": "12612", "properties": {"AOD_1020nm": 0.193906, "AOD_440nm": 0.639658, "AOD_870nm": 0.258769, "Elevation_Meters": 7.0}, "type": "Feature"}, {"bbox": [-63.882597, -31.667411, -63.882597, -31.667411], "geometry": {"coordinates": [-63.882597, -31.667411], "type": "Point"}, "id": "17962", "properties": {"AOD_1020nm": 0.122743, "AOD_440nm": 0.383714, "AOD_870nm": 0.139446, "Elevation_Meters": 333.0}, "type": "Feature"}, {"bbox": [12.631667, 35.516667, 12.631667, 35.516667], "geometry": {"coordinates": [12.631667, 35.516667], "type": "Point"}, "id": "30286", "properties": {"AOD_1020nm": 0.048726, "AOD_440nm": 0.087194, "AOD_870nm": 0.054477, "Elevation_Meters": 45.0}, "type": "Feature"}, {"bbox": [-115.691, 38.497, -115.691, 38.497], "geometry": {"coordinates": [-115.691, 38.497], "type": "Point"}, "id": "35486", "properties": {"AOD_1020nm": 0.013702, "AOD_440nm": 0.024384, "AOD_870nm": 0.016243, "Elevation_Meters": 1437.0}, "type": "Feature"}, {"bbox": [15.7237, 40.601254, 15.7237, 40.601254], "geometry": {"coordinates": [15.7237, 40.601254], "type": "Point"}, "id": "40973", "properties": {"AOD_1020nm": 0.003426, "AOD_440nm": 0.024007, "AOD_870nm": 0.005903, "Elevation_Meters": 770.0}, "type": "Feature"}, {"bbox": [12.5083, 45.3139, 12.5083, 45.3139], "geometry": {"coordinates": [12.5083, 45.3139], "type": "Point"}, "id": "43711", "properties": {"AOD_1020nm": 0.020069, "AOD_440nm": null, "AOD_870nm": null, "Elevation_Meters": 10.0}, "type": "Feature"}, {"bbox": [129.1897, 35.5819, 129.1897, 35.5819], "geometry": {"coordinates": [129.1897, 35.5819], "type": "Point"}, "id": "57160", "properties": {"AOD_1020nm": 0.136009, "AOD_440nm": 0.455297, "AOD_870nm": 0.178975, "Elevation_Meters": 106.0}, "type": "Feature"}, {"bbox": [-58.999867, -2.144117, -58.999867, -2.144117], "geometry": {"coordinates": [-58.999867, -2.144117], "type": "Point"}, "id": "66775", "properties": {"AOD_1020nm": 0.026816, "AOD_440nm": 0.07101, "AOD_870nm": 0.030466, "Elevation_Meters": 210.0}, "type": "Feature"}, {"bbox": [100.041183, 13.819308, 100.041183, 13.819308], "geometry": {"coordinates": [100.041183, 13.819308], "type": "Point"}, "id": "69985", "properties": {"AOD_1020nm": 0.097954, "AOD_440nm": 0.44305, "AOD_870nm": 0.131365, "Elevation_Meters": 72.0}, "type": "Feature"}, {"bbox": [-64.879, 32.264, -64.879, 32.264], "geometry": {"coordinates": [-64.879, 32.264], "type": "Point"}, "id": "75354", "properties": {"AOD_1020nm": 0.0371, "AOD_440nm": 0.048539, "AOD_870nm": 0.038018, "Elevation_Meters": 51.0}, "type": "Feature"}, {"bbox": [-96.56309, 39.10077, -96.56309, 39.10077], "geometry": {"coordinates": [-96.56309, 39.10077], "type": "Point"}, "id": "82757", "properties": {"AOD_1020nm": 0.00928, "AOD_440nm": 0.036226, "AOD_870nm": 0.010591, "Elevation_Meters": 415.0}, "type": "Feature"}, {"bbox": [-61.721667, -39.148333, -61.721667, -39.148333], "geometry": {"coordinates": [-61.721667, -39.148333], "type": "Point"}, "id": "86869", "properties": {"AOD_1020nm": 0.067713, "AOD_440nm": null, "AOD_870nm": null, "Elevation_Meters": 15.0}, "type": "Feature"}, {"bbox": [121.537859, 25.297452, 121.537859, 25.297452], "geometry": {"coordinates": [121.537859, 25.297452], "type": "Point"}, "id": "87674", "properties": {"AOD_1020nm": 0.074908, "AOD_440nm": 0.232032, "AOD_870nm": 0.090784, "Elevation_Meters": 40.0}, "type": "Feature"}, {"bbox": [-114.58278, 32.644138, -114.58278, 32.644138], "geometry": {"coordinates": [-114.58278, 32.644138], "type": "Point"}, "id": "97320", "properties": {"AOD_1020nm": 0.022309, "AOD_440nm": 0.035316, "AOD_870nm": 0.023877, "Elevation_Meters": 63.0}, "type": "Feature"}, {"bbox": [-63.200961, -17.767325, -63.200961, -17.767325], "geometry": {"coordinates": [-63.200961, -17.767325], "type": "Point"}, "id": "99847", "properties": {"AOD_1020nm": 0.036603, "AOD_440nm": 0.115248, "AOD_870nm": 0.04404, "Elevation_Meters": 432.0}, "type": "Feature"}, {"bbox": [-99.05879, 35.41059, -99.05879, 35.41059], "geometry": {"coordinates": [-99.05879, 35.41059], "type": "Point"}, "id": "101718", "properties": {"AOD_1020nm": 0.010632, "AOD_440nm": 0.033514, "AOD_870nm": 0.014428, "Elevation_Meters": 523.0}, "type": "Feature"}, {"bbox": [-79.47, 43.79, -79.47, 43.79], "geometry": {"coordinates": [-79.47, 43.79], "type": "Point"}, "id": "105352", "properties": {"AOD_1020nm": 0.02191, "AOD_440nm": 0.054493, "AOD_870nm": 0.023983, "Elevation_Meters": 186.0}, "type": "Feature"}, {"bbox": [-95.652, 29.574167, -95.652, 29.574167], "geometry": {"coordinates": [-95.652, 29.574167], "type": "Point"}, "id": "105814", "properties": {"AOD_1020nm": 0.010556, "AOD_440nm": 0.039056, "AOD_870nm": 0.013358, "Elevation_Meters": 22.0}, "type": "Feature"}, {"bbox": [-0.88235, 41.6334, -0.88235, 41.6334], "geometry": {"coordinates": [-0.88235, 41.6334], "type": "Point"}, "id": "111458", "properties": {"AOD_1020nm": 0.015005, "AOD_440nm": 0.062323, "AOD_870nm": 0.020877, "Elevation_Meters": 250.0}, "type": "Feature"}, {"bbox": [-118.47113, 34.01685, -118.47113, 34.01685], "geometry": {"coordinates": [-118.47113, 34.01685], "type": "Point"}, "id": "121457", "properties": {"AOD_1020nm": 0.012168, "AOD_440nm": 0.031471, "AOD_870nm": 0.014105, "Elevation_Meters": 55.0}, "type": "Feature"}, {"bbox": [-95.19215, 39.040431, -95.19215, 39.040431], "geometry": {"coordinates": [-95.19215, 39.040431], "type": "Point"}, "id": "124459", "properties": {"AOD_1020nm": 0.016437, "AOD_440nm": 0.067077, "AOD_870nm": 0.020532, "Elevation_Meters": 321.0}, "type": "Feature"}, {"bbox": [151.0467, -33.93139, 151.0467, -33.93139], "geometry": {"coordinates": [151.0467, -33.93139], "type": "Point"}, "id": "134773", "properties": {"AOD_1020nm": 0.081999, "AOD_440nm": 0.184011, "AOD_870nm": 0.093252, "Elevation_Meters": 40.0}, "type": "Feature"}, {"bbox": [121.185483, 24.967533, 121.185483, 24.967533], "geometry": {"coordinates": [121.185483, 24.967533], "type": "Point"}, "id": "138790", "properties": {"AOD_1020nm": 0.09234, "AOD_440nm": 0.319192, "AOD_870nm": 0.117726, "Elevation_Meters": 144.0}, "type": "Feature"}, {"bbox": [-95.3416, 29.7177, -95.3416, 29.7177], "geometry": {"coordinates": [-95.3416, 29.7177], "type": "Point"}, "id": "143322", "properties": {"AOD_1020nm": 0.02816, "AOD_440nm": 0.063955, "AOD_870nm": 0.028004, "Elevation_Meters": 65.0}, "type": "Feature"}, {"bbox": [-3.228483, 37.910839, -3.228483, 37.910839], "geometry": {"coordinates": [-3.228483, 37.910839], "type": "Point"}, "id": "160882", "properties": {"AOD_1020nm": 0.017475, "AOD_440nm": 0.069386, "AOD_870nm": 0.030669, "Elevation_Meters": 370.0}, "type": "Feature"}, {"bbox": [-78.435589, -0.196244, -78.435589, -0.196244], "geometry": {"coordinates": [-78.435589, -0.196244], "type": "Point"}, "id": "162100", "properties": {"AOD_1020nm": 0.091022, "AOD_440nm": 0.294916, "AOD_870nm": 0.112782, "Elevation_Meters": 2414.0}, "type": "Feature"}, {"bbox": [-95.0425, 29.3883, -95.0425, 29.3883], "geometry": {"coordinates": [-95.0425, 29.3883], "type": "Point"}, "id": "165429", "properties": {"AOD_1020nm": 0.01072, "AOD_440nm": 0.049596, "AOD_870nm": 0.015028, "Elevation_Meters": 5.0}, "type": "Feature"}, {"bbox": [-121.854867, 36.59255, -121.854867, 36.59255], "geometry": {"coordinates": [-121.854867, 36.59255], "type": "Point"}, "id": "171134", "properties": {"AOD_1020nm": 0.014123, "AOD_440nm": 0.034443, "AOD_870nm": 0.015928, "Elevation_Meters": 50.0}, "type": "Feature"}, {"bbox": [1.37432, 43.57261, 1.37432, 43.57261], "geometry": {"coordinates": [1.37432, 43.57261], "type": "Point"}, "id": "181853", "properties": {"AOD_1020nm": 0.018698, "AOD_440nm": 0.078373, "AOD_870nm": 0.023896, "Elevation_Meters": 160.0}, "type": "Feature"}, {"bbox": [-73.3293, 9.5596, -73.3293, 9.5596], "geometry": {"coordinates": [-73.3293, 9.5596], "type": "Point"}, "id": "192998", "properties": {"AOD_1020nm": 0.102123, "AOD_440nm": 0.298572, "AOD_870nm": 0.121128, "Elevation_Meters": 157.0}, "type": "Feature"}, {"bbox": [-110.953003, 32.233002, -110.953003, 32.233002], "geometry": {"coordinates": [-110.953003, 32.233002], "type": "Point"}, "id": "197659", "properties": {"AOD_1020nm": 0.032093, "AOD_440nm": 0.046071, "AOD_870nm": 0.035051, "Elevation_Meters": 779.0}, "type": "Feature"}, {"bbox": [147.9499, -35.7083, 147.9499, -35.7083], "geometry": {"coordinates": [147.9499, -35.7083], "type": "Point"}, "id": "198232", "properties": {"AOD_1020nm": 0.008799, "AOD_440nm": 0.026325, "AOD_870nm": 0.012215, "Elevation_Meters": 776.0}, "type": "Feature"}, {"bbox": [146.3861, -18.5198, 146.3861, -18.5198], "geometry": {"coordinates": [146.3861, -18.5198], "type": "Point"}, "id": "200011", "properties": {"AOD_1020nm": 0.054462, "AOD_440nm": null, "AOD_870nm": 0.064409, "Elevation_Meters": 8.0}, "type": "Feature"}, {"bbox": [-16.247361, 28.472528, -16.247361, 28.472528], "geometry": {"coordinates": [-16.247361, 28.472528], "type": "Point"}, "id": "216308", "properties": {"AOD_1020nm": 0.451327, "AOD_440nm": 0.537731, "AOD_870nm": 0.479527, "Elevation_Meters": 52.0}, "type": "Feature"}, {"bbox": [116.31667, 39.93333, 116.31667, 39.93333], "geometry": {"coordinates": [116.31667, 39.93333], "type": "Point"}, "id": "228947", "properties": {"AOD_1020nm": 0.086746, "AOD_440nm": 0.238285, "AOD_870nm": 0.102525, "Elevation_Meters": 106.0}, "type": "Feature"}, {"bbox": [126.93479, 37.56443, 126.93479, 37.56443], "geometry": {"coordinates": [126.93479, 37.56443], "type": "Point"}, "id": "237892", "properties": {"AOD_1020nm": 0.06121, "AOD_440nm": 0.191808, "AOD_870nm": 0.075879, "Elevation_Meters": 97.0}, "type": "Feature"}, {"bbox": [-22.935499, 16.7325, -22.935499, 16.7325], "geometry": {"coordinates": [-22.935499, 16.7325], "type": "Point"}, "id": "262925", "properties": {"AOD_1020nm": 0.110183, "AOD_440nm": 0.25313, "AOD_870nm": 0.126452, "Elevation_Meters": 60.0}, "type": "Feature"}, {"bbox": [1.358, 40.717, 1.358, 40.717], "geometry": {"coordinates": [1.358, 40.717], "type": "Point"}, "id": "264472", "properties": {"AOD_1020nm": 0.02105, "AOD_440nm": null, "AOD_870nm": null, "Elevation_Meters": 35.0}, "type": "Feature"}, {"bbox": [120.6169, 24.1622, 120.6169, 24.1622], "geometry": {"coordinates": [120.6169, 24.1622], "type": "Point"}, "id": "265859", "properties": {"AOD_1020nm": 0.07899, "AOD_440nm": 0.250032, "AOD_870nm": 0.098325, "Elevation_Meters": 91.0}, "type": "Feature"}, {"bbox": [-118.126167, 34.13673, -118.126167, 34.13673], "geometry": {"coordinates": [-118.126167, 34.13673], "type": "Point"}, "id": "275025", "properties": {"AOD_1020nm": 0.011657, "AOD_440nm": 0.023531, "AOD_870nm": 0.012288, "Elevation_Meters": 260.0}, "type": "Feature"}, {"bbox": [120.873611, 23.468611, 120.873611, 23.468611], "geometry": {"coordinates": [120.873611, 23.468611], "type": "Point"}, "id": "284689", "properties": {"AOD_1020nm": 0.00977, "AOD_440nm": 0.035974, "AOD_870nm": 0.014228, "Elevation_Meters": 2868.0}, "type": "Feature"}, {"bbox": [10.642547, 33.499633, 10.642547, 33.499633], "geometry": {"coordinates": [10.642547, 33.499633], "type": "Point"}, "id": "289618", "properties": {"AOD_1020nm": 0.053721, "AOD_440nm": 0.1562, "AOD_870nm": 0.067032, "Elevation_Meters": 33.5}, "type": "Feature"}, {"bbox": [120.292171, 22.675621, 120.292171, 22.675621], "geometry": {"coordinates": [120.292171, 22.675621], "type": "Point"}, "id": "292962", "properties": {"AOD_1020nm": 0.072583, "AOD_440nm": 0.258728, "AOD_870nm": 0.090922, "Elevation_Meters": 15.0}, "type": "Feature"}, {"bbox": [100.30231, 5.35838, 100.30231, 5.35838], "geometry": {"coordinates": [100.30231, 5.35838], "type": "Point"}, "id": "302252", "properties": {"AOD_1020nm": 0.118123, "AOD_440nm": 0.379883, "AOD_870nm": 0.14762, "Elevation_Meters": 51.0}, "type": "Feature"}, {"bbox": [25.132861, 35.336111, 25.132861, 35.336111], "geometry": {"coordinates": [25.132861, 35.336111], "type": "Point"}, "id": "302698", "properties": {"AOD_1020nm": 0.028942, "AOD_440nm": 0.061183, "AOD_870nm": 0.038042, "Elevation_Meters": 50.0}, "type": "Feature"}, {"bbox": [34.9175, 29.5025, 34.9175, 29.5025], "geometry": {"coordinates": [34.9175, 29.5025], "type": "Point"}, "id": "306573", "properties": {"AOD_1020nm": 0.04173, "AOD_440nm": 0.079743, "AOD_870nm": 0.046058, "Elevation_Meters": 15.0}, "type": "Feature"}, {"bbox": [-90.483333, 28.866667, -90.483333, 28.866667], "geometry": {"coordinates": [-90.483333, 28.866667], "type": "Point"}, "id": "309175", "properties": {"AOD_1020nm": 0.026222, "AOD_440nm": null, "AOD_870nm": 0.032654, "Elevation_Meters": 33.581}, "type": "Feature"}, {"bbox": [23.55, -19.9, 23.55, -19.9], "geometry": {"coordinates": [23.55, -19.9], "type": "Point"}, "id": "313725", "properties": {"AOD_1020nm": 0.023172, "AOD_440nm": 0.04984, "AOD_870nm": 0.024882, "Elevation_Meters": 951.0}, "type": "Feature"}, {"bbox": [23.3868, 42.6539, 23.3868, 42.6539], "geometry": {"coordinates": [23.3868, 42.6539], "type": "Point"}, "id": "319214", "properties": {"AOD_1020nm": 0.044251, "AOD_440nm": 0.187247, "AOD_870nm": 0.059058, "Elevation_Meters": 631.0}, "type": "Feature"}, {"bbox": [-105.17799, 39.743725, -105.17799, 39.743725], "geometry": {"coordinates": [-105.17799, 39.743725], "type": "Point"}, "id": "323606", "properties": {"AOD_1020nm": 0.008225, "AOD_440nm": 0.020966, "AOD_870nm": 0.010795, "Elevation_Meters": 1833.0}, "type": "Feature"}, {"bbox": [-5.6673, -15.9424, -5.6673, -15.9424], "geometry": {"coordinates": [-5.6673, -15.9424], "type": "Point"}, "id": "326658", "properties": {"AOD_1020nm": 0.002563, "AOD_440nm": 0.025523, "AOD_870nm": 0.006274, "Elevation_Meters": 434.0}, "type": "Feature"}, {"bbox": [-106.540069, 35.054583, -106.540069, 35.054583], "geometry": {"coordinates": [-106.540069, 35.054583], "type": "Point"}, "id": "333449", "properties": {"AOD_1020nm": 0.012338, "AOD_440nm": 0.02778, "AOD_870nm": 0.017702, "Elevation_Meters": 1662.5}, "type": "Feature"}, {"bbox": [-4.515694, 41.988572, -4.515694, 41.988572], "geometry": {"coordinates": [-4.515694, 41.988572], "type": "Point"}, "id": "340877", "properties": {"AOD_1020nm": 0.031048, "AOD_440nm": 0.08922, "AOD_870nm": 0.035706, "Elevation_Meters": 750.0}, "type": "Feature"}, {"bbox": [-56.166767, -34.918167, -56.166767, -34.918167], "geometry": {"coordinates": [-56.166767, -34.918167], "type": "Point"}, "id": "344191", "properties": {"AOD_1020nm": 0.056858, "AOD_440nm": 0.200464, "AOD_870nm": 0.068803, "Elevation_Meters": 71.0}, "type": "Feature"}, {"bbox": [-16.639, 28.27, -16.639, 28.27], "geometry": {"coordinates": [-16.639, 28.27], "type": "Point"}, "id": "353308", "properties": {"AOD_1020nm": 0.007887, "AOD_440nm": 0.022484, "AOD_870nm": 0.009498, "Elevation_Meters": 3555.0}, "type": "Feature"}, {"bbox": [-5.933867, 13.278433, -5.933867, 13.278433], "geometry": {"coordinates": [-5.933867, 13.278433], "type": "Point"}, "id": "360770", "properties": {"AOD_1020nm": 0.211225, "AOD_440nm": 0.265106, "AOD_870nm": 0.222244, "Elevation_Meters": 285.0}, "type": "Feature"}, {"bbox": [-75.3209, -12.0402, -75.3209, -12.0402], "geometry": {"coordinates": [-75.3209, -12.0402], "type": "Point"}, "id": "364233", "properties": {"AOD_1020nm": 0.026945, "AOD_440nm": 0.074509, "AOD_870nm": 0.031361, "Elevation_Meters": 3313.0}, "type": "Feature"}, {"bbox": [-8.4208, 43.363, -8.4208, 43.363], "geometry": {"coordinates": [-8.4208, 43.363], "type": "Point"}, "id": "375574", "properties": {"AOD_1020nm": 0.087428, "AOD_440nm": 0.147513, "AOD_870nm": 0.099509, "Elevation_Meters": 67.0}, "type": "Feature"}, {"bbox": [9.84369, 46.81281, 9.84369, 46.81281], "geometry": {"coordinates": [9.84369, 46.81281], "type": "Point"}, "id": "380274", "properties": {"AOD_1020nm": 0.005988, "AOD_440nm": 0.024363, "AOD_870nm": 0.008751, "Elevation_Meters": 1589.0}, "type": "Feature"}, {"bbox": [8.990233, 13.776683, 8.990233, 13.776683], "geometry": {"coordinates": [8.990233, 13.776683], "type": "Point"}, "id": "383292", "properties": {"AOD_1020nm": 0.153058, "AOD_440nm": 0.171823, "AOD_870nm": 0.157543, "Elevation_Meters": 456.0}, "type": "Feature"}, {"bbox": [5.395, 43.3059, 5.395, 43.3059], "geometry": {"coordinates": [5.395, 43.3059], "type": "Point"}, "id": "383467", "properties": {"AOD_1020nm": 0.011379, "AOD_440nm": 0.073216, "AOD_870nm": 0.017382, "Elevation_Meters": 65.0}, "type": "Feature"}, {"bbox": [-67.045383, 17.97045, -67.045383, 17.97045], "geometry": {"coordinates": [-67.045383, 17.97045], "type": "Point"}, "id": "395250", "properties": {"AOD_1020nm": 0.032915, "AOD_440nm": 0.054114, "AOD_870nm": 0.034167, "Elevation_Meters": 12.4}, "type": "Feature"}, {"bbox": [2.6251, 39.5533, 2.6251, 39.5533], "geometry": {"coordinates": [2.6251, 39.5533], "type": "Point"}, "id": "420435", "properties": {"AOD_1020nm": 0.028866, "AOD_440nm": 0.0756, "AOD_870nm": 0.033473, "Elevation_Meters": 10.0}, "type": "Feature"}, {"bbox": [-95.059, 29.669, -95.059, 29.669], "geometry": {"coordinates": [-95.059, 29.669], "type": "Point"}, "id": "420940", "properties": {"AOD_1020nm": 0.010764, "AOD_440nm": 0.057546, "AOD_870nm": 0.015135, "Elevation_Meters": 7.0}, "type": "Feature"}, {"bbox": [-89.60879, -0.8954, -89.60879, -0.8954], "geometry": {"coordinates": [-89.60879, -0.8954], "type": "Point"}, "id": "429641", "properties": {"AOD_1020nm": 0.089908, "AOD_440nm": 0.165135, "AOD_870nm": 0.09543, "Elevation_Meters": 22.0}, "type": "Feature"}, {"bbox": [21.156, -28.379, 21.156, -28.379], "geometry": {"coordinates": [21.156, -28.379], "type": "Point"}, "id": "437357", "properties": {"AOD_1020nm": 0.012929, "AOD_440nm": 0.04475, "AOD_870nm": 0.017224, "Elevation_Meters": 865.0}, "type": "Feature"}, {"bbox": [-94.786969, 29.546244, -94.786969, 29.546244], "geometry": {"coordinates": [-94.786969, 29.546244], "type": "Point"}, "id": "438196", "properties": {"AOD_1020nm": 0.013711, "AOD_440nm": 0.062588, "AOD_870nm": 0.018386, "Elevation_Meters": 1.0}, "type": "Feature"}, {"bbox": [141.3407, 43.0755, 141.3407, 43.0755], "geometry": {"coordinates": [141.3407, 43.0755], "type": "Point"}, "id": "439656", "properties": {"AOD_1020nm": 0.079625, "AOD_440nm": 0.179923, "AOD_870nm": 0.08958, "Elevation_Meters": 59.0}, "type": "Feature"}, {"bbox": [-99.241356, 47.128228, -99.241356, 47.128228], "geometry": {"coordinates": [-99.241356, 47.128228], "type": "Point"}, "id": "442169", "properties": {"AOD_1020nm": 0.012343, "AOD_440nm": 0.044742, "AOD_870nm": 0.015073, "Elevation_Meters": 590.0}, "type": "Feature"}, {"bbox": [116.9615, 39.7536, 116.9615, 39.7536], "geometry": {"coordinates": [116.9615, 39.7536], "type": "Point"}, "id": "453760", "properties": {"AOD_1020nm": 0.077189, "AOD_440nm": 0.216744, "AOD_870nm": 0.090979, "Elevation_Meters": 36.0}, "type": "Feature"}, {"bbox": [-97.57, 33.40123, -97.57, 33.40123], "geometry": {"coordinates": [-97.57, 33.40123], "type": "Point"}, "id": "455216", "properties": {"AOD_1020nm": 0.01103, "AOD_440nm": 0.041669, "AOD_870nm": 0.013944, "Elevation_Meters": 259.0}, "type": "Feature"}, {"bbox": [33.381353, 35.140628, 33.381353, 35.140628], "geometry": {"coordinates": [33.381353, 35.140628], "type": "Point"}, "id": "461859", "properties": {"AOD_1020nm": 0.025471, "AOD_440nm": 0.056773, "AOD_870nm": 0.027863, "Elevation_Meters": 181.0}, "type": "Feature"}, {"bbox": [101.45, 13.5, 101.45, 13.5], "geometry": {"coordinates": [101.45, 13.5], "type": "Point"}, "id": "467011", "properties": {"AOD_1020nm": 0.107838, "AOD_440nm": 0.360698, "AOD_870nm": 0.131305, "Elevation_Meters": 60.0}, "type": "Feature"}, {"bbox": [-111.045013, 45.662204, -111.045013, 45.662204], "geometry": {"coordinates": [-111.045013, 45.662204], "type": "Point"}, "id": "479080", "properties": {"AOD_1020nm": 0.006274, "AOD_440nm": 0.030521, "AOD_870nm": 0.009825, "Elevation_Meters": 1507.0}, "type": "Feature"}, {"bbox": [-1.1016, 39.945, -1.1016, 39.945], "geometry": {"coordinates": [-1.1016, 39.945], "type": "Point"}, "id": "495552", "properties": {"AOD_1020nm": 0.188869, "AOD_440nm": 0.277278, "AOD_870nm": 0.205548, "Elevation_Meters": 1280.0}, "type": "Feature"}, {"bbox": [16.502944, -23.273, 16.502944, -23.273], "geometry": {"coordinates": [16.502944, -23.273], "type": "Point"}, "id": "498345", "properties": {"AOD_1020nm": 0.046784, "AOD_440nm": null, "AOD_870nm": 0.050838, "Elevation_Meters": 1818.0}, "type": "Feature"}, {"bbox": [-106.885002, 34.354721, -106.885002, 34.354721], "geometry": {"coordinates": [-106.885002, 34.354721], "type": "Point"}, "id": "504267", "properties": {"AOD_1020nm": 0.018268, "AOD_440nm": 0.030391, "AOD_870nm": 0.018422, "Elevation_Meters": 1477.0}, "type": "Feature"}, {"bbox": [16.331611, 48.237861, 16.331611, 48.237861], "geometry": {"coordinates": [16.331611, 48.237861], "type": "Point"}, "id": "529259", "properties": {"AOD_1020nm": 0.049625, "AOD_440nm": 0.192514, "AOD_870nm": 0.065297, "Elevation_Meters": 266.0}, "type": "Feature"}, {"bbox": [2.66519, 13.54693, 2.66519, 13.54693], "geometry": {"coordinates": [2.66519, 13.54693], "type": "Point"}, "id": "536864", "properties": {"AOD_1020nm": 0.070467, "AOD_440nm": 0.096602, "AOD_870nm": 0.074916, "Elevation_Meters": 274.0}, "type": "Feature"}, {"bbox": [-0.6092, 43.6243, -0.6092, 43.6243], "geometry": {"coordinates": [-0.6092, 43.6243], "type": "Point"}, "id": "537180", "properties": {"AOD_1020nm": 0.016678, "AOD_440nm": 0.066409, "AOD_870nm": 0.020958, "Elevation_Meters": 124.0}, "type": "Feature"}, {"bbox": [-0.302058, 6.109408, -0.302058, 6.109408], "geometry": {"coordinates": [-0.302058, 6.109408], "type": "Point"}, "id": "544052", "properties": {"AOD_1020nm": 0.417136, "AOD_440nm": 0.664993, "AOD_870nm": 0.437377, "Elevation_Meters": 205.0}, "type": "Feature"}, {"bbox": [-119.814033, 39.540867, -119.814033, 39.540867], "geometry": {"coordinates": [-119.814033, 39.540867], "type": "Point"}, "id": "549883", "properties": {"AOD_1020nm": 0.016869, "AOD_440nm": 0.049097, "AOD_870nm": 0.02223, "Elevation_Meters": 1410.0}, "type": "Feature"}, {"bbox": [104.419167, 43.577222, 104.419167, 43.577222], "geometry": {"coordinates": [104.419167, 43.577222], "type": "Point"}, "id": "561775", "properties": {"AOD_1020nm": 0.008911, "AOD_440nm": 0.039897, "AOD_870nm": 0.011951, "Elevation_Meters": 1470.0}, "type": "Feature"}, {"bbox": [100.5177, 13.7491, 100.5177, 13.7491], "geometry": {"coordinates": [100.5177, 13.7491], "type": "Point"}, "id": "571731", "properties": {"AOD_1020nm": 0.152059, "AOD_440nm": 0.597834, "AOD_870nm": 0.199921, "Elevation_Meters": 57.1}, "type": "Feature"}, {"bbox": [3.111072, 45.76096, 3.111072, 45.76096], "geometry": {"coordinates": [3.111072, 45.76096], "type": "Point"}, "id": "574127", "properties": {"AOD_1020nm": 0.009901, "AOD_440nm": 0.049376, "AOD_870nm": 0.014784, "Elevation_Meters": 423.0}, "type": "Feature"}, {"bbox": [-110.53914, 44.95348, -110.53914, 44.95348], "geometry": {"coordinates": [-110.53914, 44.95348], "type": "Point"}, "id": "575762", "properties": {"AOD_1020nm": 0.011079, "AOD_440nm": 0.029177, "AOD_870nm": 0.014616, "Elevation_Meters": 2116.0}, "type": "Feature"}, {"bbox": [2.11206, 41.38925, 2.11206, 41.38925], "geometry": {"coordinates": [2.11206, 41.38925], "type": "Point"}, "id": "585335", "properties": {"AOD_1020nm": 0.021585, "AOD_440nm": 0.095433, "AOD_870nm": 0.028842, "Elevation_Meters": 125.0}, "type": "Feature"}, {"bbox": [-115.691, 38.497, -115.691, 38.497], "geometry": {"coordinates": [-115.691, 38.497], "type": "Point"}, "id": "613410", "properties": {"AOD_1020nm": 0.017476, "AOD_440nm": 0.027565, "AOD_870nm": 0.017473, "Elevation_Meters": 1437.0}, "type": "Feature"}, {"bbox": [-97.485619, 36.605175, -97.485619, 36.605175], "geometry": {"coordinates": [-97.485619, 36.605175], "type": "Point"}, "id": "623603", "properties": {"AOD_1020nm": 0.014039, "AOD_440nm": 0.04043, "AOD_870nm": 0.013694, "Elevation_Meters": 319.0}, "type": "Feature"}, {"bbox": [-63.594, 44.638, -63.594, 44.638], "geometry": {"coordinates": [-63.594, 44.638], "type": "Point"}, "id": "627706", "properties": {"AOD_1020nm": 0.017426, "AOD_440nm": 0.043905, "AOD_870nm": 0.019294, "Elevation_Meters": 65.0}, "type": "Feature"}, {"bbox": [-118.11782, 33.56371, -118.11782, 33.56371], "geometry": {"coordinates": [-118.11782, 33.56371], "type": "Point"}, "id": "630474", "properties": {"AOD_1020nm": 0.011652, "AOD_440nm": null, "AOD_870nm": 0.013028, "Elevation_Meters": 31.0}, "type": "Feature"}, {"bbox": [-90.1432, 36.9717, -90.1432, 36.9717], "geometry": {"coordinates": [-90.1432, 36.9717], "type": "Point"}, "id": "636446", "properties": {"AOD_1020nm": 0.048839, "AOD_440nm": 0.120312, "AOD_870nm": 0.058117, "Elevation_Meters": 111.0}, "type": "Feature"}, {"bbox": [40.214722, -2.941667, 40.214722, -2.941667], "geometry": {"coordinates": [40.214722, -2.941667], "type": "Point"}, "id": "637125", "properties": {"AOD_1020nm": 0.073023, "AOD_440nm": null, "AOD_870nm": null, "Elevation_Meters": 20.0}, "type": "Feature"}, {"bbox": [23.333333, -71.95, 23.333333, -71.95], "geometry": {"coordinates": [23.333333, -71.95], "type": "Point"}, "id": "641185", "properties": {"AOD_1020nm": 0.007206, "AOD_440nm": 0.036165, "AOD_870nm": 0.011767, "Elevation_Meters": 1396.0}, "type": "Feature"}, {"bbox": [94.896889, 27.45085, 94.896889, 27.45085], "geometry": {"coordinates": [94.896889, 27.45085], "type": "Point"}, "id": "642200", "properties": {"AOD_1020nm": 0.076829, "AOD_440nm": 0.293252, "AOD_870nm": 0.103694, "Elevation_Meters": 119.0}, "type": "Feature"}, {"bbox": [-5.026617, 6.223517, -5.026617, 6.223517], "geometry": {"coordinates": [-5.026617, 6.223517], "type": "Point"}, "id": "646286", "properties": {"AOD_1020nm": 0.186027, "AOD_440nm": 0.48051, "AOD_870nm": 0.216605, "Elevation_Meters": 105.0}, "type": "Feature"}, {"bbox": [4.6745, 8.4841, 4.6745, 8.4841], "geometry": {"coordinates": [4.6745, 8.4841], "type": "Point"}, "id": "654453", "properties": {"AOD_1020nm": 0.22305, "AOD_440nm": 0.442934, "AOD_870nm": 0.244483, "Elevation_Meters": 400.0}, "type": "Feature"}, {"bbox": [-88.371944, 40.053333, -88.371944, 40.053333], "geometry": {"coordinates": [-88.371944, 40.053333], "type": "Point"}, "id": "660525", "properties": {"AOD_1020nm": 0.014808, "AOD_440nm": 0.064216, "AOD_870nm": 0.019422, "Elevation_Meters": 212.0}, "type": "Feature"}, {"bbox": [-109.388269, 38.248331, -109.388269, 38.248331], "geometry": {"coordinates": [-109.388269, 38.248331], "type": "Point"}, "id": "664021", "properties": {"AOD_1020nm": 0.005369, "AOD_440nm": 0.019613, "AOD_870nm": 0.006731, "Elevation_Meters": 1799.0}, "type": "Feature"}, {"bbox": [-1.43698, 51.14446, -1.43698, 51.14446], "geometry": {"coordinates": [-1.43698, 51.14446], "type": "Point"}, "id": "671877", "properties": {"AOD_1020nm": 0.035003, "AOD_440nm": 0.094165, "AOD_870nm": 0.041453, "Elevation_Meters": 88.0}, "type": "Feature"}, {"bbox": [-155.576755, 19.536006, -155.576755, 19.536006], "geometry": {"coordinates": [-155.576755, 19.536006], "type": "Point"}, "id": "682985", "properties": {"AOD_1020nm": 0.006453, "AOD_440nm": 0.020026, "AOD_870nm": 0.008199, "Elevation_Meters": 3402.0}, "type": "Feature"}, {"bbox": [-71.287203, 44.063881, -71.287203, 44.063881], "geometry": {"coordinates": [-71.287203, 44.063881], "type": "Point"}, "id": "684496", "properties": {"AOD_1020nm": 0.006688, "AOD_440nm": 0.023496, "AOD_870nm": 0.008431, "Elevation_Meters": 273.0}, "type": "Feature"}, {"bbox": [-94.763, 30.096944, -94.763, 30.096944], "geometry": {"coordinates": [-94.763, 30.096944], "type": "Point"}, "id": "684873", "properties": {"AOD_1020nm": 0.012857, "AOD_440nm": 0.053337, "AOD_870nm": 0.015112, "Elevation_Meters": 20.0}, "type": "Feature"}, {"bbox": [-65.6199, 18.3845, -65.6199, 18.3845], "geometry": {"coordinates": [-65.6199, 18.3845], "type": "Point"}, "id": "688187", "properties": {"AOD_1020nm": 0.124696, "AOD_440nm": 0.159593, "AOD_870nm": 0.133934, "Elevation_Meters": 15.0}, "type": "Feature"}, {"bbox": [114.0967, -22.2407, 114.0967, -22.2407], "geometry": {"coordinates": [114.0967, -22.2407], "type": "Point"}, "id": "693140", "properties": {"AOD_1020nm": 0.086051, "AOD_440nm": 0.094267, "AOD_870nm": 0.087083, "Elevation_Meters": 9.0}, "type": "Feature"}, {"bbox": [31.5875, -24.9917, 31.5875, -24.9917], "geometry": {"coordinates": [31.5875, -24.9917], "type": "Point"}, "id": "697617", "properties": {"AOD_1020nm": 0.032994, "AOD_440nm": 0.066705, "AOD_870nm": 0.036474, "Elevation_Meters": 265.0}, "type": "Feature"}, {"bbox": [28.19319, 43.044624, 28.19319, 43.044624], "geometry": {"coordinates": [28.19319, 43.044624], "type": "Point"}, "id": "702517", "properties": {"AOD_1020nm": 0.036355, "AOD_440nm": null, "AOD_870nm": null, "Elevation_Meters": 31.0}, "type": "Feature"}, {"bbox": [103.780383, 1.297667, 103.780383, 1.297667], "geometry": {"coordinates": [103.780383, 1.297667], "type": "Point"}, "id": "721288", "properties": {"AOD_1020nm": 0.250363, "AOD_440nm": 0.32925, "AOD_870nm": 0.255827, "Elevation_Meters": 30.0}, "type": "Feature"}, {"bbox": [26.030703, 44.348292, 26.030703, 44.348292], "geometry": {"coordinates": [26.030703, 44.348292], "type": "Point"}, "id": "723246", "properties": {"AOD_1020nm": 0.026614, "AOD_440nm": 0.113654, "AOD_870nm": 0.037576, "Elevation_Meters": 90.0}, "type": "Feature"}, {"bbox": [22.96, 40.63, 22.96, 40.63], "geometry": {"coordinates": [22.96, 40.63], "type": "Point"}, "id": "727943", "properties": {"AOD_1020nm": 0.026118, "AOD_440nm": 0.110999, "AOD_870nm": 0.033508, "Elevation_Meters": 60.0}, "type": "Feature"}, {"bbox": [13.445, -14.958, 13.445, -14.958], "geometry": {"coordinates": [13.445, -14.958], "type": "Point"}, "id": "733100", "properties": {"AOD_1020nm": 0.035406, "AOD_440nm": 0.041216, "AOD_870nm": 0.037639, "Elevation_Meters": 2047.0}, "type": "Feature"}, {"bbox": [12.515773, 41.901695, 12.515773, 41.901695], "geometry": {"coordinates": [12.515773, 41.901695], "type": "Point"}, "id": "734490", "properties": {"AOD_1020nm": 0.022089, "AOD_440nm": 0.108732, "AOD_870nm": 0.031947, "Elevation_Meters": 75.0}, "type": "Feature"}, {"bbox": [-116.347989, 43.600697, -116.347989, 43.600697], "geometry": {"coordinates": [-116.347989, 43.600697], "type": "Point"}, "id": "736373", "properties": {"AOD_1020nm": 0.060708, "AOD_440nm": 0.199452, "AOD_870nm": 0.072187, "Elevation_Meters": 808.0}, "type": "Feature"}, {"bbox": [102.71671, 17.8772, 102.71671, 17.8772], "geometry": {"coordinates": [102.71671, 17.8772], "type": "Point"}, "id": "737710", "properties": {"AOD_1020nm": 0.112785, "AOD_440nm": 0.385792, "AOD_870nm": 0.142068, "Elevation_Meters": 175.0}, "type": "Feature"}, {"bbox": [11.0119, 47.8019, 11.0119, 47.8019], "geometry": {"coordinates": [11.0119, 47.8019], "type": "Point"}, "id": "746096", "properties": {"AOD_1020nm": 0.007352, "AOD_440nm": 0.025833, "AOD_870nm": 0.008359, "Elevation_Meters": 989.68}, "type": "Feature"}, {"bbox": [128.249, 26.867, 128.249, 26.867], "geometry": {"coordinates": [128.249, 26.867], "type": "Point"}, "id": "747030", "properties": {"AOD_1020nm": 0.070988, "AOD_440nm": 0.200014, "AOD_870nm": 0.087447, "Elevation_Meters": 60.0}, "type": "Feature"}, {"bbox": [102.5043, 13.6889, 102.5043, 13.6889], "geometry": {"coordinates": [102.5043, 13.6889], "type": "Point"}, "id": "756613", "properties": {"AOD_1020nm": 0.097886, "AOD_440nm": 0.355246, "AOD_870nm": 0.125058, "Elevation_Meters": 67.8}, "type": "Feature"}, {"bbox": [-72.172661, 42.5369, -72.172661, 42.5369], "geometry": {"coordinates": [-72.172661, 42.5369], "type": "Point"}, "id": "768611", "properties": {"AOD_1020nm": 0.0073, "AOD_440nm": 0.024565, "AOD_870nm": 0.008954, "Elevation_Meters": 348.0}, "type": "Feature"}, {"bbox": [124.630278, 37.966111, 124.630278, 37.966111], "geometry": {"coordinates": [124.630278, 37.966111], "type": "Point"}, "id": "769948", "properties": {"AOD_1020nm": 0.030062, "AOD_440nm": 0.070066, "AOD_870nm": 0.033337, "Elevation_Meters": 136.0}, "type": "Feature"}, {"bbox": [128.867, 37.771, 128.867, 37.771], "geometry": {"coordinates": [128.867, 37.771], "type": "Point"}, "id": "772310", "properties": {"AOD_1020nm": 0.110766, "AOD_440nm": 0.399497, "AOD_870nm": 0.146484, "Elevation_Meters": 60.0}, "type": "Feature"}, {"bbox": [-6.733472, 37.105, -6.733472, 37.105], "geometry": {"coordinates": [-6.733472, 37.105], "type": "Point"}, "id": "776712", "properties": {"AOD_1020nm": 0.063958, "AOD_440nm": 0.110046, "AOD_870nm": 0.068409, "Elevation_Meters": 59.0}, "type": "Feature"}, {"bbox": [15.041058, -23.561619, 15.041058, -23.561619], "geometry": {"coordinates": [15.041058, -23.561619], "type": "Point"}, "id": "779490", "properties": {"AOD_1020nm": 0.081249, "AOD_440nm": 0.11959, "AOD_870nm": 0.08543, "Elevation_Meters": 405.0}, "type": "Feature"}, {"bbox": [127.26582, 37.33883, 127.26582, 37.33883], "geometry": {"coordinates": [127.26582, 37.33883], "type": "Point"}, "id": "784822", "properties": {"AOD_1020nm": 0.055196, "AOD_440nm": 0.174516, "AOD_870nm": 0.068854, "Elevation_Meters": 167.0}, "type": "Feature"}, {"bbox": [-120.99422, 37.64217, -120.99422, 37.64217], "geometry": {"coordinates": [-120.99422, 37.64217], "type": "Point"}, "id": "786122", "properties": {"AOD_1020nm": 0.049028, "AOD_440nm": 0.201929, "AOD_870nm": 0.066881, "Elevation_Meters": 33.0}, "type": "Feature"}, {"bbox": [86.948056, 28.365, 86.948056, 28.365], "geometry": {"coordinates": [86.948056, 28.365], "type": "Point"}, "id": "790914", "properties": {"AOD_1020nm": 0.009032, "AOD_440nm": 0.024016, "AOD_870nm": 0.005081, "Elevation_Meters": 4276.0}, "type": "Feature"}, {"bbox": [11.573, 48.148, 11.573, 48.148], "geometry": {"coordinates": [11.573, 48.148], "type": "Point"}, "id": "793629", "properties": {"AOD_1020nm": 0.02087, "AOD_440nm": 0.103871, "AOD_870nm": 0.030107, "Elevation_Meters": 533.0}, "type": "Feature"}, {"bbox": [83.97518, 28.186643, 83.97518, 28.186643], "geometry": {"coordinates": [83.97518, 28.186643], "type": "Point"}, "id": "797444", "properties": {"AOD_1020nm": 0.114582, "AOD_440nm": 0.375062, "AOD_870nm": 0.148595, "Elevation_Meters": 800.0}, "type": "Feature"}, {"bbox": [-0.09624, 51.77632, -0.09624, 51.77632], "geometry": {"coordinates": [-0.09624, 51.77632], "type": "Point"}, "id": "801258", "properties": {"AOD_1020nm": 0.031326, "AOD_440nm": 0.097087, "AOD_870nm": 0.038926, "Elevation_Meters": 75.0}, "type": "Feature"}, {"bbox": [5.53, 22.79, 5.53, 22.79], "geometry": {"coordinates": [5.53, 22.79], "type": "Point"}, "id": "806196", "properties": {"AOD_1020nm": 0.065013, "AOD_440nm": 0.078001, "AOD_870nm": 0.06733, "Elevation_Meters": 1377.0}, "type": "Feature"}, {"bbox": [126.951111, 37.458056, 126.951111, 37.458056], "geometry": {"coordinates": [126.951111, 37.458056], "type": "Point"}, "id": "815458", "properties": {"AOD_1020nm": 0.056606, "AOD_440nm": 0.179754, "AOD_870nm": 0.07065, "Elevation_Meters": 116.0}, "type": "Feature"}, {"bbox": [-106.988, 38.956, -106.988, 38.956], "geometry": {"coordinates": [-106.988, 38.956], "type": "Point"}, "id": "815926", "properties": {"AOD_1020nm": 0.013824, "AOD_440nm": 0.025129, "AOD_870nm": 0.013843, "Elevation_Meters": 2894.0}, "type": "Feature"}, {"bbox": [-1.1707, 38.001, -1.1707, 38.001], "geometry": {"coordinates": [-1.1707, 38.001], "type": "Point"}, "id": "819775", "properties": {"AOD_1020nm": 0.016136, "AOD_440nm": 0.059992, "AOD_870nm": 0.021304, "Elevation_Meters": 69.0}, "type": "Feature"}, {"bbox": [76.916031, 28.317329, 76.916031, 28.317329], "geometry": {"coordinates": [76.916031, 28.317329], "type": "Point"}, "id": "829432", "properties": {"AOD_1020nm": 0.33484, "AOD_440nm": 0.542663, "AOD_870nm": 0.388422, "Elevation_Meters": 285.0}, "type": "Feature"}, {"bbox": [33.04275, 34.674806, 33.04275, 34.674806], "geometry": {"coordinates": [33.04275, 34.674806], "type": "Point"}, "id": "834360", "properties": {"AOD_1020nm": 0.024873, "AOD_440nm": 0.060148, "AOD_870nm": 0.03212, "Elevation_Meters": 22.0}, "type": "Feature"}, {"bbox": [-58.9657, -62.2015, -58.9657, -62.2015], "geometry": {"coordinates": [-58.9657, -62.2015], "type": "Point"}, "id": "840627", "properties": {"AOD_1020nm": 0.031967, "AOD_440nm": 0.099584, "AOD_870nm": 0.037567, "Elevation_Meters": 33.0}, "type": "Feature"}, {"bbox": [-75.577914, 6.260672, -75.577914, 6.260672], "geometry": {"coordinates": [-75.577914, 6.260672], "type": "Point"}, "id": "841734", "properties": {"AOD_1020nm": 0.050384, "AOD_440nm": 0.192882, "AOD_870nm": 0.066511, "Elevation_Meters": 1471.0}, "type": "Feature"}, {"bbox": [135.590633, 34.650933, 135.590633, 34.650933], "geometry": {"coordinates": [135.590633, 34.650933], "type": "Point"}, "id": "847835", "properties": {"AOD_1020nm": 0.0601, "AOD_440nm": 0.204949, "AOD_870nm": 0.073841, "Elevation_Meters": 50.0}, "type": "Feature"}, {"bbox": [29.4466, 44.5458, 29.4466, 44.5458], "geometry": {"coordinates": [29.4466, 44.5458], "type": "Point"}, "id": "849426", "properties": {"AOD_1020nm": 0.034556, "AOD_440nm": null, "AOD_870nm": null, "Elevation_Meters": 30.0}, "type": "Feature"}, {"bbox": [12.5083, 45.3139, 12.5083, 45.3139], "geometry": {"coordinates": [12.5083, 45.3139], "type": "Point"}, "id": "862103", "properties": {"AOD_1020nm": 0.021759, "AOD_440nm": null, "AOD_870nm": 0.028341, "Elevation_Meters": 10.0}, "type": "Feature"}, {"bbox": [-28.02917, 39.09109, -28.02917, 39.09109], "geometry": {"coordinates": [-28.02917, 39.09109], "type": "Point"}, "id": "874945", "properties": {"AOD_1020nm": 0.039028, "AOD_440nm": 0.04969, "AOD_870nm": 0.040289, "Elevation_Meters": 15.2}, "type": "Feature"}, {"bbox": [-0.4202, 39.507, -0.4202, 39.507], "geometry": {"coordinates": [-0.4202, 39.507], "type": "Point"}, "id": "879027", "properties": {"AOD_1020nm": 0.030444, "AOD_440nm": 0.074899, "AOD_870nm": 0.03298, "Elevation_Meters": 104.0}, "type": "Feature"}, {"bbox": [-4.219809, 50.317132, -4.219809, 50.317132], "geometry": {"coordinates": [-4.219809, 50.317132], "type": "Point"}, "id": "880521", "properties": {"AOD_1020nm": 0.031589, "AOD_440nm": 0.068757, "AOD_870nm": 0.034465, "Elevation_Meters": 105.0}, "type": "Feature"}, {"bbox": [67.13594, 24.94574, 67.13594, 24.94574], "geometry": {"coordinates": [67.13594, 24.94574], "type": "Point"}, "id": "886185", "properties": {"AOD_1020nm": 0.113763, "AOD_440nm": 0.362533, "AOD_870nm": 0.143914, "Elevation_Meters": 49.0}, "type": "Feature"}, {"bbox": [14.306567, 40.836842, 14.306567, 40.836842], "geometry": {"coordinates": [14.306567, 40.836842], "type": "Point"}, "id": "896479", "properties": {"AOD_1020nm": 0.02689, "AOD_440nm": 0.13472, "AOD_870nm": 0.036286, "Elevation_Meters": 50.0}, "type": "Feature"}, {"bbox": [-111.78301, 43.82011, -111.78301, 43.82011], "geometry": {"coordinates": [-111.78301, 43.82011], "type": "Point"}, "id": "902213", "properties": {"AOD_1020nm": 0.03488, "AOD_440nm": 0.069711, "AOD_870nm": 0.044246, "Elevation_Meters": 1501.0}, "type": "Feature"}, {"bbox": [15.566833, 38.1975, 15.566833, 38.1975], "geometry": {"coordinates": [15.566833, 38.1975], "type": "Point"}, "id": "904802", "properties": {"AOD_1020nm": 0.027958, "AOD_440nm": 0.074336, "AOD_870nm": 0.031817, "Elevation_Meters": 15.0}, "type": "Feature"}, {"bbox": [84.127944, 25.871, 84.127944, 25.871], "geometry": {"coordinates": [84.127944, 25.871], "type": "Point"}, "id": "907750", "properties": {"AOD_1020nm": 0.416007, "AOD_440nm": 1.021037, "AOD_870nm": 0.524668, "Elevation_Meters": 60.0}, "type": "Feature"}, {"bbox": [-68.066467, -16.539, -68.066467, -16.539], "geometry": {"coordinates": [-68.066467, -16.539], "type": "Point"}, "id": "911364", "properties": {"AOD_1020nm": 0.079712, "AOD_440nm": 0.17069, "AOD_870nm": 0.086349, "Elevation_Meters": 3439.0}, "type": "Feature"}, {"bbox": [23.134333, -15.266667, 23.134333, -15.266667], "geometry": {"coordinates": [23.134333, -15.266667], "type": "Point"}, "id": "913317", "properties": {"AOD_1020nm": 0.051134, "AOD_440nm": 0.092693, "AOD_870nm": 0.056157, "Elevation_Meters": 1040.0}, "type": "Feature"}, {"bbox": [40.1945, -2.996, 40.1945, -2.996], "geometry": {"coordinates": [40.1945, -2.996], "type": "Point"}, "id": "927495", "properties": {"AOD_1020nm": 0.086884, "AOD_440nm": 0.141734, "AOD_870nm": 0.093468, "Elevation_Meters": 12.0}, "type": "Feature"}, {"bbox": [-24.995374, 16.877772, -24.995374, 16.877772], "geometry": {"coordinates": [-24.995374, 16.877772], "type": "Point"}, "id": "931076", "properties": {"AOD_1020nm": 0.008535, "AOD_440nm": 0.040251, "AOD_870nm": 0.013318, "Elevation_Meters": 10.0}, "type": "Feature"}, {"bbox": [90.39819, 23.72839, 90.39819, 23.72839], "geometry": {"coordinates": [90.39819, 23.72839], "type": "Point"}, "id": "937380", "properties": {"AOD_1020nm": 0.249457, "AOD_440nm": 0.813876, "AOD_870nm": 0.334859, "Elevation_Meters": 34.0}, "type": "Feature"}, {"bbox": [8.6267, 45.80305, 8.6267, 45.80305], "geometry": {"coordinates": [8.6267, 45.80305], "type": "Point"}, "id": "943439", "properties": {"AOD_1020nm": 0.021917, "AOD_440nm": null, "AOD_870nm": null, "Elevation_Meters": 235.0}, "type": "Feature"}, {"bbox": [-85.371717, 42.407983, -85.371717, 42.407983], "geometry": {"coordinates": [-85.371717, 42.407983], "type": "Point"}, "id": "946461", "properties": {"AOD_1020nm": 0.011009, "AOD_440nm": 0.047051, "AOD_870nm": 0.014091, "Elevation_Meters": 293.0}, "type": "Feature"}, {"bbox": [-114.84995, 45.1035, -114.84995, 45.1035], "geometry": {"coordinates": [-114.84995, 45.1035], "type": "Point"}, "id": "950272", "properties": {"AOD_1020nm": 0.019936, "AOD_440nm": 0.033379, "AOD_870nm": 0.020134, "Elevation_Meters": 1159.0}, "type": "Feature"}, {"bbox": [140.02333, 35.610833, 140.02333, 35.610833], "geometry": {"coordinates": [140.02333, 35.610833], "type": "Point"}, "id": "950994", "properties": {"AOD_1020nm": 0.040856, "AOD_440nm": null, "AOD_870nm": null, "Elevation_Meters": 8.2}, "type": "Feature"}, {"bbox": [138.571534, 35.67882, 138.571534, 35.67882], "geometry": {"coordinates": [138.571534, 35.67882], "type": "Point"}, "id": "951726", "properties": {"AOD_1020nm": 0.029925, "AOD_440nm": 0.102022, "AOD_870nm": 0.036264, "Elevation_Meters": 314.0}, "type": "Feature"}, {"bbox": [-58.506411, -34.555425, -58.506411, -34.555425], "geometry": {"coordinates": [-58.506411, -34.555425], "type": "Point"}, "id": "959655", "properties": {"AOD_1020nm": 0.086186, "AOD_440nm": 0.392806, "AOD_870nm": 0.114912, "Elevation_Meters": 26.0}, "type": "Feature"}, {"bbox": [-3.605, 37.164, -3.605, 37.164], "geometry": {"coordinates": [-3.605, 37.164], "type": "Point"}, "id": "964555", "properties": {"AOD_1020nm": 0.031164, "AOD_440nm": 0.093273, "AOD_870nm": 0.039399, "Elevation_Meters": 680.0}, "type": "Feature"}, {"bbox": [-121.49311, 38.56844, -121.49311, 38.56844], "geometry": {"coordinates": [-121.49311, 38.56844], "type": "Point"}, "id": "966894", "properties": {"AOD_1020nm": 0.035655, "AOD_440nm": 0.143036, "AOD_870nm": 0.049174, "Elevation_Meters": 15.0}, "type": "Feature"}, {"bbox": [-16.49906, 28.30932, -16.49906, 28.30932], "geometry": {"coordinates": [-16.49906, 28.30932], "type": "Point"}, "id": "972501", "properties": {"AOD_1020nm": 0.158417, "AOD_440nm": 0.193886, "AOD_870nm": 0.167649, "Elevation_Meters": 2401.0}, "type": "Feature"}, {"bbox": [-81.27, 43.008, -81.27, 43.008], "geometry": {"coordinates": [-81.27, 43.008], "type": "Point"}, "id": "973549", "properties": {"AOD_1020nm": 0.018606, "AOD_440nm": 0.066558, "AOD_870nm": 0.023773, "Elevation_Meters": 258.0}, "type": "Feature"}, {"bbox": [-93.774778, 42.021361, -93.774778, 42.021361], "geometry": {"coordinates": [-93.774778, 42.021361], "type": "Point"}, "id": "975999", "properties": {"AOD_1020nm": 0.016463, "AOD_440nm": 0.072655, "AOD_870nm": 0.022934, "Elevation_Meters": 338.0}, "type": "Feature"}, {"bbox": [13.350636, 42.368386, 13.350636, 42.368386], "geometry": {"coordinates": [13.350636, 42.368386], "type": "Point"}, "id": "979438", "properties": {"AOD_1020nm": 0.009296, "AOD_440nm": 0.037293, "AOD_870nm": 0.011668, "Elevation_Meters": 656.0}, "type": "Feature"}, {"bbox": [21.22736, 45.74626, 21.22736, 45.74626], "geometry": {"coordinates": [21.22736, 45.74626], "type": "Point"}, "id": "981047", "properties": {"AOD_1020nm": 0.053335, "AOD_440nm": 0.22086, "AOD_870nm": 0.069147, "Elevation_Meters": 122.0}, "type": "Feature"}, {"bbox": [-4.70583, 41.6636, -4.70583, 41.6636], "geometry": {"coordinates": [-4.70583, 41.6636], "type": "Point"}, "id": "985886", "properties": {"AOD_1020nm": 0.039761, "AOD_440nm": 0.100251, "AOD_870nm": 0.044624, "Elevation_Meters": 705.0}, "type": "Feature"}, {"bbox": [23.783088, 37.977036, 23.783088, 37.977036], "geometry": {"coordinates": [23.783088, 37.977036], "type": "Point"}, "id": "986611", "properties": {"AOD_1020nm": 0.050602, "AOD_440nm": 0.186442, "AOD_870nm": 0.063265, "Elevation_Meters": 215.0}, "type": "Feature"}, {"bbox": [0.1745, 51.608, 0.1745, 51.608], "geometry": {"coordinates": [0.1745, 51.608], "type": "Point"}, "id": "987014", "properties": {"AOD_1020nm": 0.048993, "AOD_440nm": 0.095092, "AOD_870nm": 0.053067, "Elevation_Meters": 42.1}, "type": "Feature"}, {"bbox": [-1.250958, 53.005652, -1.250958, 53.005652], "geometry": {"coordinates": [-1.250958, 53.005652], "type": "Point"}, "id": "991483", "properties": {"AOD_1020nm": 0.034706, "AOD_440nm": 0.118855, "AOD_870nm": 0.043804, "Elevation_Meters": 120.0}, "type": "Feature"}, {"bbox": [145.1015, -38.02464, 145.1015, -38.02464], "geometry": {"coordinates": [145.1015, -38.02464], "type": "Point"}, "id": "994132", "properties": {"AOD_1020nm": 0.048374, "AOD_440nm": 0.083617, "AOD_870nm": 0.055504, "Elevation_Meters": 18.0}, "type": "Feature"}, {"bbox": [-112.452439, 40.177589, -112.452439, 40.177589], "geometry": {"coordinates": [-112.452439, 40.177589], "type": "Point"}, "id": "997774", "properties": {"AOD_1020nm": 0.016642, "AOD_440nm": 0.053709, "AOD_870nm": 0.020525, "Elevation_Meters": 1656.0}, "type": "Feature"}, {"bbox": [-71.93133, 45.379754, -71.93133, 45.379754], "geometry": {"coordinates": [-71.93133, 45.379754], "type": "Point"}, "id": "1011549", "properties": {"AOD_1020nm": 0.01515, "AOD_440nm": 0.043302, "AOD_870nm": 0.017098, "Elevation_Meters": 251.0}, "type": "Feature"}, {"bbox": [-122.056969, 37.419986, -122.056969, 37.419986], "geometry": {"coordinates": [-122.056969, 37.419986], "type": "Point"}, "id": "1013034", "properties": {"AOD_1020nm": 0.027107, "AOD_440nm": 0.091652, "AOD_870nm": 0.032373, "Elevation_Meters": 10.0}, "type": "Feature"}, {"bbox": [-1.163222, 44.663528, -1.163222, 44.663528], "geometry": {"coordinates": [-1.163222, 44.663528], "type": "Point"}, "id": "1015354", "properties": {"AOD_1020nm": 0.039172, "AOD_440nm": 0.165573, "AOD_870nm": 0.057435, "Elevation_Meters": 11.0}, "type": "Feature"}, {"bbox": [-70.661666, -33.457222, -70.661666, -33.457222], "geometry": {"coordinates": [-70.661666, -33.457222], "type": "Point"}, "id": "1028898", "properties": {"AOD_1020nm": 0.123004, "AOD_440nm": 0.320618, "AOD_870nm": 0.144846, "Elevation_Meters": 560.0}, "type": "Feature"}, {"bbox": [-116.991667, 46.4875, -116.991667, 46.4875], "geometry": {"coordinates": [-116.991667, 46.4875], "type": "Point"}, "id": "1033309", "properties": {"AOD_1020nm": 0.032625, "AOD_440nm": 0.058006, "AOD_870nm": 0.035198, "Elevation_Meters": 824.0}, "type": "Feature"}, {"bbox": [27.555556, 47.193056, 27.555556, 47.193056], "geometry": {"coordinates": [27.555556, 47.193056], "type": "Point"}, "id": "1040973", "properties": {"AOD_1020nm": 0.057308, "AOD_440nm": 0.175379, "AOD_870nm": 0.069616, "Elevation_Meters": 175.0}, "type": "Feature"}, {"bbox": [31.290067, 30.080767, 31.290067, 30.080767], "geometry": {"coordinates": [31.290067, 30.080767], "type": "Point"}, "id": "1045341", "properties": {"AOD_1020nm": 0.127939, "AOD_440nm": 0.338225, "AOD_870nm": 0.149111, "Elevation_Meters": 70.0}, "type": "Feature"}, {"bbox": [-72.8847, 40.866, -72.8847, 40.866], "geometry": {"coordinates": [-72.8847, 40.866], "type": "Point"}, "id": "1047499", "properties": {"AOD_1020nm": 0.02216, "AOD_440nm": 0.048649, "AOD_870nm": 0.023808, "Elevation_Meters": 37.0}, "type": "Feature"}, {"bbox": [-3.72395, 40.4519, -3.72395, 40.4519], "geometry": {"coordinates": [-3.72395, 40.4519], "type": "Point"}, "id": "1055883", "properties": {"AOD_1020nm": 0.029013, "AOD_440nm": 0.103893, "AOD_870nm": 0.03579, "Elevation_Meters": 680.0}, "type": "Feature"}, {"bbox": [140.1038, 35.6247, 140.1038, 35.6247], "geometry": {"coordinates": [140.1038, 35.6247], "type": "Point"}, "id": "1060934", "properties": {"AOD_1020nm": 0.038607, "AOD_440nm": 0.102651, "AOD_870nm": 0.044954, "Elevation_Meters": 60.0}, "type": "Feature"}, {"bbox": [-114.083336, 46.916668, -114.083336, 46.916668], "geometry": {"coordinates": [-114.083336, 46.916668], "type": "Point"}, "id": "1065029", "properties": {"AOD_1020nm": 0.027291, "AOD_440nm": 0.070679, "AOD_870nm": 0.030038, "Elevation_Meters": 976.0}, "type": "Feature"}, {"bbox": [-96.625991, 43.736481, -96.625991, 43.736481], "geometry": {"coordinates": [-96.625991, 43.736481], "type": "Point"}, "id": "1068566", "properties": {"AOD_1020nm": 0.010289, "AOD_440nm": 0.044195, "AOD_870nm": 0.012384, "Elevation_Meters": 505.0}, "type": "Feature"}, {"bbox": [120.204664, 22.993419, 120.204664, 22.993419], "geometry": {"coordinates": [120.204664, 22.993419], "type": "Point"}, "id": "1071915", "properties": {"AOD_1020nm": 0.097977, "AOD_440nm": 0.319793, "AOD_870nm": 0.122448, "Elevation_Meters": 50.0}, "type": "Feature"}, {"bbox": [-56.07086, -15.73091, -56.07086, -15.73091], "geometry": {"coordinates": [-56.07086, -15.73091], "type": "Point"}, "id": "1079082", "properties": {"AOD_1020nm": 0.212074, "AOD_440nm": 0.311123, "AOD_870nm": 0.23176, "Elevation_Meters": 210.0}, "type": "Feature"}, {"bbox": [137.977832, 36.251487, 137.977832, 36.251487], "geometry": {"coordinates": [137.977832, 36.251487], "type": "Point"}, "id": "1079741", "properties": {"AOD_1020nm": 0.018947, "AOD_440nm": 0.067646, "AOD_870nm": 0.022893, "Elevation_Meters": 626.0}, "type": "Feature"}, {"bbox": [73.183183, 6.77635, 73.183183, 6.77635], "geometry": {"coordinates": [73.183183, 6.77635], "type": "Point"}, "id": "1088188", "properties": {"AOD_1020nm": 0.079524, "AOD_440nm": 0.258521, "AOD_870nm": 0.103884, "Elevation_Meters": 13.0}, "type": "Feature"}, {"bbox": [0.44, 51.29, 0.44, 51.29], "geometry": {"coordinates": [0.44, 51.29], "type": "Point"}, "id": "1096138", "properties": {"AOD_1020nm": 0.028142, "AOD_440nm": 0.083751, "AOD_870nm": 0.034086, "Elevation_Meters": 33.0}, "type": "Feature"}, {"bbox": [-100.91535, 46.769719, -100.91535, 46.769719], "geometry": {"coordinates": [-100.91535, 46.769719], "type": "Point"}, "id": "1116312", "properties": {"AOD_1020nm": 0.010057, "AOD_440nm": 0.035476, "AOD_870nm": 0.012105, "Elevation_Meters": 578.0}, "type": "Feature"}, {"bbox": [-73.949036, 40.821313, -73.949036, 40.821313], "geometry": {"coordinates": [-73.949036, 40.821313], "type": "Point"}, "id": "1120789", "properties": {"AOD_1020nm": 0.015537, "AOD_440nm": 0.054428, "AOD_870nm": 0.019615, "Elevation_Meters": 100.0}, "type": "Feature"}, {"bbox": [-8.15583, 31.62583, -8.15583, 31.62583], "geometry": {"coordinates": [-8.15583, 31.62583], "type": "Point"}, "id": "1132541", "properties": {"AOD_1020nm": 0.048458, "AOD_440nm": 0.085721, "AOD_870nm": 0.050953, "Elevation_Meters": 420.0}, "type": "Feature"}, {"bbox": [-105.545972, 40.2759, -105.545972, 40.2759], "geometry": {"coordinates": [-105.545972, 40.2759], "type": "Point"}, "id": "1137398", "properties": {"AOD_1020nm": 0.007048, "AOD_440nm": 0.018323, "AOD_870nm": 0.00846, "Elevation_Meters": 2750.0}, "type": "Feature"}, {"bbox": [9.359289, 43.003669, 9.359289, 43.003669], "geometry": {"coordinates": [9.359289, 43.003669], "type": "Point"}, "id": "1144840", "properties": {"AOD_1020nm": 0.023045, "AOD_440nm": 0.051132, "AOD_870nm": 0.026976, "Elevation_Meters": 80.0}, "type": "Feature"}, {"bbox": [-17.4256, 14.7017, -17.4256, 14.7017], "geometry": {"coordinates": [-17.4256, 14.7017], "type": "Point"}, "id": "1150720", "properties": {"AOD_1020nm": 0.186631, "AOD_440nm": 0.373811, "AOD_870nm": 0.207849, "Elevation_Meters": 15.0}, "type": "Feature"}, {"bbox": [121.001122, 24.783995, 121.001122, 24.783995], "geometry": {"coordinates": [121.001122, 24.783995], "type": "Point"}, "id": "1152147", "properties": {"AOD_1020nm": 0.10562, "AOD_440nm": 0.34482, "AOD_870nm": 0.134809, "Elevation_Meters": 99.0}, "type": "Feature"}, {"bbox": [-46.49967, -23.48163, -46.49967, -23.48163], "geometry": {"coordinates": [-46.49967, -23.48163], "type": "Point"}, "id": "1153117", "properties": {"AOD_1020nm": 0.041827, "AOD_440nm": 0.152435, "AOD_870nm": 0.048585, "Elevation_Meters": 754.0}, "type": "Feature"}, {"bbox": [-79.781414, 44.231543, -79.781414, 44.231543], "geometry": {"coordinates": [-79.781414, 44.231543], "type": "Point"}, "id": "1161507", "properties": {"AOD_1020nm": 0.016019, "AOD_440nm": 0.054065, "AOD_870nm": 0.019168, "Elevation_Meters": 264.0}, "type": "Feature"}, {"bbox": [9.914003, 35.55055, 9.914003, 35.55055], "geometry": {"coordinates": [9.914003, 35.55055], "type": "Point"}, "id": "1167528", "properties": {"AOD_1020nm": 0.024798, "AOD_440nm": 0.05989, "AOD_870nm": 0.02848, "Elevation_Meters": 130.0}, "type": "Feature"}, {"bbox": [5.71, 43.935, 5.71, 43.935], "geometry": {"coordinates": [5.71, 43.935], "type": "Point"}, "id": "1171890", "properties": {"AOD_1020nm": 0.007679, "AOD_440nm": 0.027563, "AOD_870nm": 0.009792, "Elevation_Meters": 680.0}, "type": "Feature"}, {"bbox": [114.179722, 22.303333, 114.179722, 22.303333], "geometry": {"coordinates": [114.179722, 22.303333], "type": "Point"}, "id": "1179347", "properties": {"AOD_1020nm": 0.121686, "AOD_440nm": 0.355401, "AOD_870nm": 0.150693, "Elevation_Meters": 30.0}, "type": "Feature"}, {"bbox": [104.871011, 15.245518, 104.871011, 15.245518], "geometry": {"coordinates": [104.871011, 15.245518], "type": "Point"}, "id": "1182497", "properties": {"AOD_1020nm": 0.12855, "AOD_440nm": 0.260442, "AOD_870nm": 0.1287, "Elevation_Meters": 120.0}, "type": "Feature"}, {"bbox": [-84.109618, 39.775977, -84.109618, 39.775977], "geometry": {"coordinates": [-84.109618, 39.775977], "type": "Point"}, "id": "1188288", "properties": {"AOD_1020nm": 0.032103, "AOD_440nm": 0.100077, "AOD_870nm": 0.036915, "Elevation_Meters": 243.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_cb0013bd5e8dfb608c21e764c61066cb.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["AOD_1020nm", "AOD_870nm", "AOD_440nm", "Elevation_Meters"];
+    let aliases = ["AOD_1020nm", "AOD_870nm", "AOD_440nm", "Elevation_Meters"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+            geo_json_cb0013bd5e8dfb608c21e764c61066cb.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            map_e5fbac465f0375ab426af9aefef75255.fitBounds(
+                [[-71.95, -155.576755], [53.005652, 151.0467]],
+                {}
+            );
+        
+    
+            map_e5fbac465f0375ab426af9aefef75255.fitBounds(
+                [[20, -175], [20, -175]],
+                {"maxZoom": 6}
+            );
+        
+    
+            var layer_control_13f8c9dcf8ea2b41b368618e664363b5_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_aeacb50c7787dbf7ecd402f9ef3bcdb1,
+                },
+                overlays :  {
+                    "Google Satellite" : tile_layer_c7fd7763467ce3b21199250044714cf1,
+                    "SO2 Retrievals 2022-01-16" : tile_layer_e5ffecfd549220c15265a684630e21d8,
+                    "SO2 Feature Mask 2022-01-16" : tile_layer_a0296fd1fd2a1a5126ae2881b476e0cc,
+                    "AOD Retrievals 2022-01-16" : tile_layer_28c24849e8a3b12aab25f803b8f0c8e9,
+                    "AOD Feature Mask 2022-01-16" : tile_layer_4ed2b642d308c8c59f61023fba368d07,
+                    "Combined AOD \u0026 SO2 Raster 2022-01-16" : tile_layer_a247d6b52e9c83e7ad4b24d02ae8c325,
+                    "Combined AOD \u0026 SO2 Feature Mask 2022-01-16" : tile_layer_9f6480848afd3275a14a0fdff9f5fb67,
+                    "Aeronet Retrievals" : geo_json_cb0013bd5e8dfb608c21e764c61066cb,
+                },
+            };
+            let layer_control_13f8c9dcf8ea2b41b368618e664363b5 = L.control.layers(
+                layer_control_13f8c9dcf8ea2b41b368618e664363b5_layers.base_layers,
+                layer_control_13f8c9dcf8ea2b41b368618e664363b5_layers.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_e5fbac465f0375ab426af9aefef75255);
+
+        
+    
+            tile_layer_aeacb50c7787dbf7ecd402f9ef3bcdb1.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            tile_layer_c7fd7763467ce3b21199250044714cf1.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            tile_layer_e5ffecfd549220c15265a684630e21d8.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            tile_layer_a0296fd1fd2a1a5126ae2881b476e0cc.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            tile_layer_28c24849e8a3b12aab25f803b8f0c8e9.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            tile_layer_4ed2b642d308c8c59f61023fba368d07.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            tile_layer_a247d6b52e9c83e7ad4b24d02ae8c325.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            tile_layer_9f6480848afd3275a14a0fdff9f5fb67.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+    
+            geo_json_cb0013bd5e8dfb608c21e764c61066cb.addTo(map_e5fbac465f0375ab426af9aefef75255);
+        
+</script>
+</html>
